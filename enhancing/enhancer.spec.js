@@ -1,6 +1,7 @@
 const enhancer = require("./enhancer.js");
 
 const item = {
+  name: "Lightsaber",
   enhancement: 13,
   durability: 37,
 };
@@ -20,8 +21,8 @@ describe("success", () => {
 
 describe("failure", () => {
   it("fails", async () => {
-    const failure = await enhancer.fail(item);
-    expect(failure.durability).toBe(32);
+    const fail = await enhancer.fail(item);
+    expect(fail.durability).toBe(32);
   });
 });
 
@@ -29,5 +30,12 @@ describe("repair", () => {
   it("repairs", async () => {
     const repair = await enhancer.repair(item);
     expect(repair.durability).toBe(100);
+  });
+});
+
+describe("get", () => {
+  it("gets", async () => {
+    const get = await enhancer.get(item);
+    expect(get.name).toBe("[+14] Lightsaber");
   });
 });
